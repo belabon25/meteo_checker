@@ -40,7 +40,10 @@ namespace SurveillanceMeteo
         {
             MeteocielImage image = new MeteocielImage();
             if (!string.Equals(image.ImageLocalisation, manager.Images.Last().ImageLocalisation))
+            {
                 manager.Images.Add(image);
+                listeImages.SelectedItem = manager.Images.Last();
+            }        
         }
 
         private void ListeImages_SelectionChanged(object sender, SelectionChangedEventArgs e)
