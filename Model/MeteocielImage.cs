@@ -13,7 +13,7 @@ namespace Model
 {
     public class MeteocielImage : ImageDownloader, INotifyPropertyChanged
     {
-        public int NbImages { get => nbImages; }
+        public static int NbImages => nbImages;
         private static int nbImages;
 
         public MeteocielImage()
@@ -34,6 +34,7 @@ namespace Model
             }
             catch (Exception e)
             {
+                _ = e;
                 timeOfDay = new TimeSpan(DateTime.Now.TimeOfDay.Hours - 2, intermediary-5, 0); // the date of the image is two hours earlier than the french timezone for some reasons
                 imageLocalisation = "http://modeles14.meteociel.fr/radar/tiles/" + dateImage.ToString("yyyy/M/dd") + "/1/" + dateImage.ToString("yyyyMMdd") + $"{timeOfDay.Hours.ToString("00")}" + $"{timeOfDay.Minutes.ToString("00")}" + "-0-0.png?";
                 GetRadarImage();
