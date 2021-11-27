@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,14 @@ namespace Model
             Nom = "Prévisions Keraunos.org";
             CompleteSavingPath = SavingPath + "\\Keraunos.png";
             imageLocalisation = "https://www.keraunos.org/img/prevision-orages-tornades-keraunos.png?";
-            GetRadarImage();
+            try
+            {
+                GetRadarImage();
+            }
+            catch (Exception e2)
+            {
+                Debug.WriteLine(e2.ToString());
+            }
         }
     }
 }
