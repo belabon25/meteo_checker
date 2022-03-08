@@ -28,7 +28,15 @@ namespace Model
             TimeSpan timeOfDay = new TimeSpan(DateTime.Now.TimeOfDay.Hours - 2, intermediary, 0); // the date of the image is two hours earlier than the french timezone for some reasons
             HourPic = (timeOfDay+TimeSpan.FromHours(2)).ToString();
             Nom = HourPic;
+            if (Int32.Parse(dateImage.ToString("dd")) > 10)
+            { 
+            
             imageLocalisation = "http://modeles14.meteociel.fr/radar/tiles/" + dateImage.ToString("yyyy/M/dd") + "/1/" + dateImage.ToString("yyyyMMdd") + $"{timeOfDay.Hours.ToString("00")}" + $"{timeOfDay.Minutes.ToString("00")}" + "-0-0.png?";
+            }
+            else
+            {              
+            imageLocalisation = "http://modeles14.meteociel.fr/radar/tiles/" + dateImage.ToString("yyyy/M/d") + "/1/" + dateImage.ToString("yyyyMMdd") + $"{timeOfDay.Hours.ToString("00")}" + $"{timeOfDay.Minutes.ToString("00")}" + "-0-0.png?";
+            }
             try
             {
                 GetRadarImage();
